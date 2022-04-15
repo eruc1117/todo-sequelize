@@ -5,6 +5,8 @@ const bcrypt = require('bcryptjs')
 const app = express()
 const routes = require('./routes')
 const PORT = 3000
+
+
 app.engine('handlebars', exphbs({ defaultLayout: 'main'}))
 app.set('view engine', 'handlebars')
 app.use(express.urlencoded({ extended: true }))
