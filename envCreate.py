@@ -1,0 +1,8 @@
+f = open('.env', 'a')
+ID = input('輸入FACEBOOK_ID')
+SECRET = input('輸入FACEBOOK_SECRET')
+f.write('FACEBOOK_ID=' + ID + '\n')
+f.write('FACEBOOK_SECRET=' + SECRET + '\n')
+f.write('FACEBOOK_CALLBACK=http://localhost:3000/auth/facebook/callback\n')
+f.write('SESSION_SECRET=ThisIsMySecret\n')
+f.write('PORT=3000\n')
