@@ -7,7 +7,10 @@ const User = db.User
 router.get('/', (req, res) => {
   const id = req.user.id
   return Todo.findAll({
-    where: { UserId: id },
+    where: {
+      UserId: id ,
+      dataStatus: `exist`
+    },
     raw: true,
     nest: true
   })

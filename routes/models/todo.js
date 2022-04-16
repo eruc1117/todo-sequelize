@@ -27,15 +27,24 @@ router.get('/:id/edit', (req, res) => {
     .catch(error => console.log(error))
 })
 
-router.put('/:id/edit', (req, res) => {
+router.put('/:id', (req, res) => {
   const id = req.params.id
   const name = req.body.name
-  return Todo.update({ name }, {
+  return Todo.update({ name: name }, {
     where: {
       id
     }
   })
     .then(() => res.redirect(`/todos/${id}`))
+    .catch(error => console.log(error))
+})
+
+router.delete('/:id', (req, res) => {
+  const id = req.params.id
+  console.log(id)
+  return Todo.findOne({ where: { id } })
+    .then(todo => todo.destroy())
+    .then(() => res.redirect('/'))
     .catch(error => console.log(error))
 })
 
@@ -45,5 +54,7 @@ router.get('/:id', (req, res) => {
     .then(todo => res.render('detail', { todo: todo.toJSON() }))
     .catch(error => console.log(error))
 })
+
+
 
 module.exports = router
