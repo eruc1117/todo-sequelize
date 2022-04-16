@@ -29,8 +29,10 @@ router.get('/:id/edit', (req, res) => {
 
 router.put('/:id', (req, res) => {
   const id = req.params.id
-  const name = req.body.name
-  return Todo.update({ name: name }, {
+  const { name, isDone } = req.body
+  return Todo.update({ 
+    name: name, isDone: isDone === 'on' 
+  }, {
     where: {
       id
     }
